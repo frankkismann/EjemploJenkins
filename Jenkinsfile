@@ -3,28 +3,28 @@ pipeline {
 
     environment {
         // Define las variables de entorno si es necesario
-        MAVEN_HOME = "/path/to/your/maven"
+        MAVEN_HOME = "C:/Users/frank/Downloads/apache-maven-3.9.6"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Obtener el código fuente de GitLab
-                git 'https://gitlab.com/appsource/ejemplojenkins.git'
+                // Obtener el código fuente de GitHub
+                git 'https://github.com/frankkismann/EjemploJenkins.git'
             }
         }
         
         stage('Build') {
             steps {
                 // Construir el proyecto con Maven
-                sh '${MAVEN_HOME}/bin/mvn clean package'
+                sh "${MAVEN_HOME}/bin/mvn clean package"
             }
         }
 
         stage('Code Analysis') {
             steps {
                 // Aquí podrías integrar herramientas como SonarQube para el análisis de código
-                sh '${MAVEN_HOME}/bin/mvn sonar:sonar'
+                sh "${MAVEN_HOME}/bin/mvn sonar:sonar"
             }
         }
 
